@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Carioca | Clientes</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/clientes.css">
+    <link rel="stylesheet" href="../ui/toast.css">
+    <link rel="stylesheet" href="../ui/confirm.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div>
+                <div class="sidebar-brand">
+                    <img src="../assets/images/logo.png" alt="Logo Pizzaria Carioca">
+                    <div>
+                        <strong>Pizzaria</strong>
+                        <span>Carioca</span>
+                    </div>
+                </div>
+
+                <nav class="sidebar-menu">
+                    <a href="dashboard.html" class="menu-item">
+                        <i class="fa-solid fa-border-all"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a href="pedidos.html" class="menu-item menu-item-destaque">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span>Pedidos</span>
+                    </a>
+
+                    <a href="produtos.html" class="menu-item">
+                        <i class="fa-solid fa-pizza-slice"></i>
+                        <span>Produtos</span>
+                    </a>
+
+                    <a href="clientes.html" class="menu-item active">
+                        <i class="fa-solid fa-users"></i>
+                        <span>Clientes</span>
+                    </a>
+
+                    <a href="comandas.html" class="menu-item">
+                        <i class="fa-solid fa-print"></i>
+                        <span>Comandas</span>
+                    </a>
+
+                    <a href="caixa.html" class="menu-item menu-item-destaque">
+                        <i class="fa-solid fa-wallet"></i>
+                        <span>Caixa</span>
+                    </a>
+
+                    <a href="relatorios.html" class="menu-item">
+                        <i class="fa-solid fa-chart-column"></i>
+                        <span>Relatórios</span>
+                    </a>
+
+                    <a href="usuarios.html" class="menu-item">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <span>Usuários</span>
+                    </a>
+
+                    <a href="backup.html" class="menu-item">
+                        <i class="fa-solid fa-database"></i>
+                        <span>Backup</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-user-avatar">PC</div>
+                    <div>
+                        <strong>Pizzaria Carioca</strong>
+                        <span>Atendimento</span>
+                    </div>
+                </div>
+
+                <button id="btnSair" class="logout-button">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Sair
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Clientes</h1>
+                    <p>Cadastre, pesquise e edite os dados dos clientes.</p>
+                </div>
+
+                <div class="topbar-actions">
+                    <button id="btnNovoCliente" class="btn-primary">
+                        <i class="fa-solid fa-plus"></i>
+                        Novo Cliente
+                    </button>
+                </div>
+            </header>
+
+            <section class="toolbar">
+                <div class="toolbar-left">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input
+                            type="text"
+                            id="txtPesquisarCliente"
+                            placeholder="Pesquisar por nome, telefone, bairro ou endereço..."
+                        >
+                    </div>
+                </div>
+            </section>
+
+            <section class="table-card">
+                <table class="clientes-table">
+                    <thead>
+                        <tr>
+                            <th width="70">Nº</th>
+                            <th>Nome</th>
+                            <th width="150">Telefone</th>
+                            <th width="150">Bairro</th>
+                            <th>Endereço</th>
+                            <th width="130">Referência</th>
+                            <th width="110">Status</th>
+                            <th width="170">Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbodyClientes">
+                        <tr>
+                            <td colspan="8" class="empty-table">
+                                Nenhum cliente cadastrado.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <div id="modalCliente" class="modal hidden">
+                <div class="modal-content modal-large">
+                    <div class="modal-header">
+                        <div>
+                            <h2 id="tituloModalCliente">Novo Cliente</h2>
+                            <p>Preencha os dados usados no atendimento e na entrega.</p>
+                        </div>
+
+                        <button id="btnFecharModal" class="btn-close">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <form id="formCliente" class="cliente-form">
+                        <input type="hidden" id="clienteId">
+
+                        <div class="form-grid">
+                            <div class="form-group full">
+                                <label for="txtNomeCompleto">Nome completo</label>
+                                <input type="text" id="txtNomeCompleto" placeholder="Ex: Maria Silva" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtTelefone">Telefone</label>
+                                <input type="text" id="txtTelefone" placeholder="Ex: (83) 99999-9999">
+                            </div>
+
+                            <div class="form-group full">
+                                <label for="txtEndereco">Endereço</label>
+                                <input type="text" id="txtEndereco" placeholder="Rua, avenida, travessa...">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtNumero">Número</label>
+                                <input type="text" id="txtNumero" placeholder="Nº">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="txtBairro">Bairro</label>
+                                <input type="text" id="txtBairro" placeholder="Ex: Centro">
+                            </div>
+
+                            <div class="form-group full">
+                                <label for="txtPontoReferencia">Ponto de referência</label>
+                                <input type="text" id="txtPontoReferencia" placeholder="Ex: próximo à farmácia...">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="selectStatusCliente">Status</label>
+                                <select id="selectStatusCliente">
+                                    <option value="1">Ativo</option>
+                                    <option value="0">Inativo</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <p id="mensagemCliente" class="mensagem-erro"></p>
+
+                        <div class="modal-footer">
+                            <button type="button" id="btnCancelarCliente" class="btn-secondary">Cancelar</button>
+
+                            <button type="submit" class="btn-primary">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Salvar Cliente
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="modalHistoricoCliente" class="modal hidden">
+                <div class="modal-content modal-large">
+                    <div class="modal-header">
+                        <div>
+                            <h2 id="tituloHistoricoCliente">Histórico de Pedidos</h2>
+                            <p id="subtituloHistoricoCliente"></p>
+                        </div>
+
+                        <button id="btnFecharHistoricoCliente" class="btn-close">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <div style="padding: 28px;">
+                        <div class="table-card">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th width="80">Código</th>
+                                        <th width="150">Data</th>
+                                        <th width="150">Status</th>
+                                        <th width="130">Pagamento</th>
+                                        <th width="120">Total</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tbodyHistoricoCliente">
+                                    <tr>
+                                        <td colspan="5" class="empty-table">Nenhum pedido encontrado.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" id="btnFecharHistoricoCliente2" class="btn-secondary">
+                            Fechar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../ui/toast.js"></script>
+    <script src="../ui/confirm.js"></script>
+    <script src="../utils/formatadores.js"></script>
+    <script src="../js/clientes/index.js"></script>
+</body>
+</html>

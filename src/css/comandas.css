@@ -1,0 +1,296 @@
+/* ==========================================================
+    COMANDAS
+========================================================== */
+
+.comandas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.comandas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+}
+
+.comanda-card {
+    position: relative;
+    overflow: hidden;
+    padding: 22px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 22px;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+}
+
+.comanda-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,176,0,.35);
+}
+
+.comanda-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        var(--color-orange),
+        var(--color-gold)
+    );
+}
+
+.comanda-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.comanda-header h3 {
+    color: var(--color-text);
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.comanda-header span {
+    color: var(--color-muted);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.comanda-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.comanda-info div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comanda-info label {
+    color: var(--color-muted);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.comanda-info strong {
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.comanda-total {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comanda-total span {
+    color: var(--color-muted);
+    font-size: 14px;
+}
+
+.comanda-total strong {
+    color: var(--color-gold);
+    font-size: 26px;
+    font-weight: 900;
+}
+
+.comanda-acoes {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.comanda-status {
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(34,197,94,.15);
+    color: #4ade80;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.comanda-status.aberta {
+    background: rgba(59,130,246,.15);
+    color: #60a5fa;
+}
+
+.comanda-status.preparo {
+    background: rgba(249,115,22,.15);
+    color: #fb923c;
+}
+
+.comanda-status.entrega {
+    background: rgba(168,85,247,.15);
+    color: #c084fc;
+}
+
+.comanda-status.finalizada {
+    background: rgba(34,197,94,.15);
+    color: #22c55e;
+}
+
+@media (max-width: 768px) {
+    .comandas-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* ==========================================================
+    PAPEL DE COMANDA (pré-visualização no modal e impressão)
+   ========================================================== */
+
+.comanda-papel {
+    max-width: 400px;
+    margin: 0 auto 24px;
+    padding: 24px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.comanda-cabecalho {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 2px dashed var(--color-border);
+    text-align: center;
+}
+
+.comanda-cabecalho strong {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--color-orange);
+}
+
+.comanda-cabecalho span {
+    font-size: 13px;
+    color: var(--color-muted);
+}
+
+.comanda-secao {
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--color-border);
+}
+
+.comanda-secao:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.comanda-secao h4 {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    margin-bottom: 8px;
+}
+
+.comanda-secao p {
+    margin: 2px 0;
+    color: var(--color-text);
+}
+
+.comanda-item-linha {
+    margin-top: 8px;
+    color: var(--color-text);
+}
+
+.comanda-item-linha strong {
+    font-weight: 700;
+}
+
+.comanda-item-sabores {
+    font-size: 13px;
+    color: var(--color-muted);
+    margin-left: 4px;
+}
+
+.comanda-totais p {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.comanda-total-final {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-gold) !important;
+}
+
+/* ==========================================================
+    IMPRESSÃO — área dedicada, fora do modal (position:fixed)
+   ========================================================== */
+
+.apenas-impressao {
+    display: none;
+}
+
+@media print {
+    .app-layout {
+        display: none !important;
+    }
+
+    .apenas-impressao {
+        display: block !important;
+    }
+
+    .comanda-papel {
+        border: 1px solid #ccc !important;
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        margin-bottom: 0 !important;
+        max-width: 72mm !important;
+        width: 72mm !important;
+        padding: 4mm !important;
+        font-size: 11px !important;
+    }
+
+    .comanda-quebra-pagina {
+        page-break-after: always;
+    }
+
+    .comanda-cabecalho strong {
+        font-size: 14px !important;
+    }
+
+    .comanda-cabecalho,
+    .comanda-cabecalho strong,
+    .comanda-cabecalho span,
+    .comanda-secao,
+    .comanda-secao h4,
+    .comanda-secao p,
+    .comanda-item-linha,
+    .comanda-item-linha strong,
+    .comanda-item-sabores,
+    .comanda-totais,
+    .comanda-total-final {
+        color: black !important;
+    }
+}

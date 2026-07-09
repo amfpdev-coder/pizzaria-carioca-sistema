@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Carioca | Dashboard</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div>
+                <div class="sidebar-brand">
+                    <img src="../assets/images/logo.png" alt="Pizzaria Carioca">
+                    <div>
+                        <strong>Pizzaria</strong>
+                        <span>Carioca</span>
+                    </div>
+                </div>
+
+                <nav class="sidebar-menu">
+                    <a href="dashboard.html" class="menu-item active">
+                        <i class="fa-solid fa-border-all"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a href="pedidos.html" class="menu-item menu-item-destaque">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span>Pedidos</span>
+                    </a>
+
+                    <a href="produtos.html" class="menu-item">
+                        <i class="fa-solid fa-pizza-slice"></i>
+                        <span>Produtos</span>
+                    </a>
+
+                    <a href="clientes.html" class="menu-item">
+                        <i class="fa-solid fa-users"></i>
+                        <span>Clientes</span>
+                    </a>
+
+                    <a href="comandas.html" class="menu-item">
+                        <i class="fa-solid fa-print"></i>
+                        <span>Comandas</span>
+                    </a>
+
+                    <a href="caixa.html" class="menu-item menu-item-destaque">
+                        <i class="fa-solid fa-wallet"></i>
+                        <span>Caixa</span>
+                    </a>
+
+                    <a href="relatorios.html" class="menu-item">
+                        <i class="fa-solid fa-chart-column"></i>
+                        <span>Relatórios</span>
+                    </a>
+
+                    <a href="usuarios.html" class="menu-item" id="menuUsuarios">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <span>Usuários</span>
+                    </a>
+
+                    <a href="backup.html" class="menu-item">
+                        <i class="fa-solid fa-database"></i>
+                        <span>Backup</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-user-avatar" id="sidebarAvatar">--</div>
+                <div>
+                    <strong id="sidebarNome">Carregando...</strong>
+                    <span id="sidebarTipo"></span>
+                </div>
+            </div>
+
+            <button id="btnSair" class="logout-button">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Sair
+            </button>
+        </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p id="boasVindas">Bem-vinda(o)!</p>
+                </div>
+            </header>
+
+            <section class="cards-grid">
+                <article class="dashboard-card">
+                    <div>
+                        <span>Pedidos hoje</span>
+                        <strong id="cardPedidosHoje">0</strong>
+                        <small>Acompanhe os pedidos do dia</small>
+                    </div>
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                </article>
+
+                <article class="dashboard-card" id="cardCaixaContainer">
+                    <div>
+                        <span>Caixa do dia</span>
+                        <strong id="cardCaixaDia">R$ 0,00</strong>
+                        <small id="cardCaixaStatus">Resumo financeiro diário</small>
+                    </div>
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                </article>
+
+                <article class="dashboard-card">
+                    <div>
+                        <span>Clientes</span>
+                        <strong id="cardClientes">0</strong>
+                        <small>Clientes cadastrados</small>
+                    </div>
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                </article>
+
+                <article class="dashboard-card">
+                    <div>
+                        <span>Entregas hoje</span>
+                        <strong id="cardEntregas">0</strong>
+                        <small>Entregas registradas</small>
+                    </div>
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-motorcycle"></i>
+                    </div>
+                </article>
+            </section>
+
+            <section class="dashboard-shortcuts">
+                <a href="pedidos.html" class="shortcut-card shortcut-primary">
+                    <i class="fa-solid fa-plus"></i>
+                    <div>
+                        <strong>Novo pedido</strong>
+                        <span>Criar pedido rapidamente</span>
+                    </div>
+                </a>
+
+                <a href="caixa.html" class="shortcut-card">
+                    <i class="fa-solid fa-wallet"></i>
+                    <div>
+                        <strong>Abrir caixa</strong>
+                        <span>Consultar movimentações</span>
+                    </div>
+                </a>
+
+                <a href="clientes.html" class="shortcut-card">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <div>
+                        <strong>Novo cliente</strong>
+                        <span>Cadastrar ou consultar</span>
+                    </div>
+                </a>
+            </section>
+
+            <section class="dashboard-panel">
+                <div>
+                    <h2>Resumo do sistema</h2>
+                    <p>
+                        Use o menu lateral para acessar clientes, cardápio, pedidos, comandas,
+                        caixa, relatórios e backup. Os atalhos acima ajudam a chegar mais rápido
+                        nas áreas mais usadas.
+                    </p>
+                </div>
+
+                <i class="fa-solid fa-pizza-slice panel-icon"></i>
+            </section>
+        </main>
+    </div>
+
+    <script src="../ui/toast.js"></script>
+    <script src="../utils/formatadores.js"></script>
+    <script src="../js/dashboard/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Carioca | Login</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <main class="login-page">
+        <section class="login-container">
+            <aside class="login-left">
+                <img src="../assets/images/logo.png" alt="Pizzaria Carioca" class="login-logo">
+
+                <h1 class="login-title">
+                    Pizzaria <span>Carioca</span>
+                </h1>
+
+                <p class="login-description">
+                    Sistema interno para organizar pedidos, clientes, cardápio,
+                    comandas, caixa e relatórios da pizzaria.
+                </p>
+
+                <div class="login-features">
+                    <div class="login-feature">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <div>
+                            <h3>Mais controle</h3>
+                            <p>Acompanhe pedidos, caixa e movimentações do dia.</p>
+                        </div>
+                    </div>
+
+                    <div class="login-feature">
+                        <i class="fa-solid fa-motorcycle"></i>
+                        <div>
+                            <h3>Pedidos organizados</h3>
+                            <p>Controle preparo, entrega e finalização.</p>
+                        </div>
+                    </div>
+
+                    <div class="login-feature">
+                        <i class="fa-solid fa-users"></i>
+                        <div>
+                            <h3>Atendimento melhor</h3>
+                            <p>Consulte clientes e endereços com mais agilidade.</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="login-right">
+                <div class="login-box" id="loginBox">
+                    <h2>Bem-vinda(o)</h2>
+                    <p>Faça login para acessar o painel administrativo.</p>
+
+                    <form id="formLogin" class="login-form">
+                        <div class="login-group">
+                            <label for="txtUsuario">Usuário</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" id="txtUsuario" placeholder="Digite seu usuário" required>
+                            </div>
+                        </div>
+
+                        <div class="login-group">
+                            <label for="txtSenha">Senha</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" id="txtSenha" placeholder="Digite sua senha" required>
+                                <button type="button" id="btnMostrarSenha" class="btn-toggle-password">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-login">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                            Entrar
+                        </button>
+
+                        <p id="mensagem" class="login-message"></p>
+                    </form>
+
+                    <button type="button" id="btnIrCriarConta" class="btn-criar-conta">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Criar nova conta
+                    </button>
+
+                    <div class="login-footer">
+                        <span>© 2026 Pizzaria Carioca</span>
+                        <strong>Sistema interno de gestão</strong>
+                    </div>
+                </div>
+
+                <!-- FORMULÁRIO CRIAR CONTA -->
+                <div class="login-box hidden" id="criarContaBox">
+                    <h2>Nova conta</h2>
+                    <p>Preencha os dados para criar um novo atendente.</p>
+
+                    <form id="formCriarConta" class="login-form">
+                        <div class="login-group">
+                            <label for="txtNovoConta">Nome completo</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" id="txtNovoConta" placeholder="Nome do atendente" required>
+                            </div>
+                        </div>
+
+                        <div class="login-group">
+                            <label for="txtLoginConta">Login</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-at"></i>
+                                <input type="text" id="txtLoginConta" placeholder="Nome de usuário" required>
+                            </div>
+                        </div>
+
+                        <div class="login-group">
+                            <label for="txtSenhaConta">Senha</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" id="txtSenhaConta" placeholder="Crie uma senha" required>
+                            </div>
+                        </div>
+
+                        <div class="login-group">
+                            <label for="txtConfSenhaConta">Confirmar senha</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" id="txtConfSenhaConta" placeholder="Repita a senha" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-login">
+                            <i class="fa-solid fa-user-plus"></i>
+                            Criar conta
+                        </button>
+
+                        <p id="mensagemConta" class="login-message"></p>
+                    </form>
+
+                    <button type="button" id="btnVoltarLogin" class="btn-criar-conta">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Voltar ao login
+                    </button>
+                </div>
+
+                <!-- MODAL SENHA MASTER -->
+                <div id="modalMaster" class="modal-master hidden">
+                    <div class="modal-master-box">
+                        <h3><i class="fa-solid fa-shield-halved"></i> Acesso restrito</h3>
+                        <p>Digite a senha master para continuar.</p>
+
+                        <div class="input-wrapper" style="margin: 16px 0;">
+                            <i class="fa-solid fa-key"></i>
+                            <input type="password" id="txtSenhaMaster" placeholder="Senha master">
+                        </div>
+
+                        <p id="mensagemMaster" class="login-message" style="margin-top: 0;"></p>
+
+                        <div style="display: flex; gap: 10px; margin-top: 8px;">
+                            <button type="button" id="btnCancelarMaster" class="btn-secondary" style="flex:1;">
+                                Cancelar
+                            </button>
+                            <button type="button" id="btnConfirmarMaster" class="btn-login" style="flex:1; margin-top:0;">
+                                Confirmar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODAL RESET DE SENHA -->
+                <div id="modalReset" class="modal-master hidden">
+                    <div class="modal-master-box">
+                        <h3><i class="fa-solid fa-rotate-left"></i> Resetar senha</h3>
+                        <p>Escolha o usuário e defina a nova senha.</p>
+
+                        <div class="login-group" style="margin: 14px 0 10px;">
+                            <label>Usuário</label>
+                            <select id="selectUsuarioReset" class="input-reset-select"></select>
+                        </div>
+
+                        <div class="login-group" style="margin-bottom: 10px;">
+                            <label>Nova senha</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" id="txtNovasenhaReset" placeholder="Nova senha">
+                            </div>
+                        </div>
+
+                        <div class="login-group" style="margin-bottom: 4px;">
+                            <label>Confirmar senha</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" id="txtConfsenhaReset" placeholder="Repita a senha">
+                            </div>
+                        </div>
+
+                        <p id="mensagemReset" class="login-message" style="margin-top: 0;"></p>
+
+                        <div style="display: flex; gap: 10px; margin-top: 8px;">
+                            <button type="button" id="btnCancelarReset" class="btn-secondary" style="flex:1;">
+                                Cancelar
+                            </button>
+                            <button type="button" id="btnConfirmarReset" class="btn-login" style="flex:1; margin-top:0;">
+                                Salvar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="../js/login/index.js"></script>
+</body>
+</html>

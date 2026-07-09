@@ -1,0 +1,195 @@
+/* ==========================================================
+    RELATÓRIOS — BLOCO DE SENHA
+   ========================================================== */
+
+.relatorio-card {
+    max-width: 460px;
+    margin: 0 auto 24px;
+    padding: 36px;
+    text-align: center;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 22px;
+    box-shadow: var(--shadow-card);
+}
+
+.relatorio-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(251, 178, 21, 0.14);
+    color: var(--color-gold);
+    border-radius: 20px;
+    font-size: 28px;
+}
+
+.relatorio-card h3 {
+    margin-bottom: 10px;
+    color: var(--color-text);
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.relatorio-card p {
+    margin-bottom: 26px;
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.relatorio-card .form-grid {
+    text-align: left;
+}
+
+/* ==========================================================
+    RELATÓRIOS — CARDS DE ESTATÍSTICAS
+   ========================================================== */
+
+.relatorio-estatisticas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+    margin-bottom: 26px;
+}
+
+.estatistica-card {
+    padding: 22px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+}
+
+.estatistica-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(251, 178, 21, 0.30);
+}
+
+.estatistica-card span {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--color-muted);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.45px;
+}
+
+.estatistica-card strong {
+    display: block;
+    color: var(--color-gold);
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
+
+/* ==========================================================
+    GERAÇÃO DE PDF — área dedicada, fora do app-layout
+   ========================================================== */
+
+.apenas-impressao {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    visibility: hidden;
+}
+
+.relatorio-pdf-pagina {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    background: white;
+    color: #000;
+}
+
+.relatorio-pdf-cabecalho {
+    text-align: center;
+    margin-bottom: 26px;
+    padding-bottom: 18px;
+    border-bottom: 2px dashed #ccc;
+}
+
+.relatorio-pdf-cabecalho strong {
+    display: block;
+    font-size: 22px;
+    font-weight: 900;
+    color: #000;
+}
+
+.relatorio-pdf-cabecalho span {
+    display: block;
+    margin-top: 4px;
+    font-size: 14px;
+    color: #555;
+}
+
+.relatorio-pdf-estatisticas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 26px;
+}
+
+.relatorio-pdf-card {
+    padding: 14px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.relatorio-pdf-card span {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #777;
+    margin-bottom: 6px;
+}
+
+.relatorio-pdf-card strong {
+    display: block;
+    font-size: 17px;
+    font-weight: 800;
+    color: #000;
+}
+
+.relatorio-pdf-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.relatorio-pdf-tabela th {
+    text-align: left;
+    padding: 8px 10px;
+    background: #f3f3f3;
+    border-bottom: 2px solid #ddd;
+    color: #000;
+}
+
+.relatorio-pdf-tabela td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #eee;
+    color: #000;
+}
+
+@media print {
+    body {
+        background: white !important;
+    }
+
+    .app-layout {
+        display: none !important;
+    }
+
+    .apenas-impressao {
+        position: static;
+        left: auto;
+        visibility: visible;
+    }
+}

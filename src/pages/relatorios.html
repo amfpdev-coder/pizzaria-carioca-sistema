@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Carioca | Relatórios</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/relatorios.css">
+    <link rel="stylesheet" href="../ui/toast.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div>
+                <div class="sidebar-brand">
+                    <img src="../assets/images/logo.png" alt="Logo Pizzaria Carioca">
+                    <div>
+                        <strong>Pizzaria</strong>
+                        <span>Carioca</span>
+                    </div>
+                </div>
+
+                <nav class="sidebar-menu">
+                    <a href="dashboard.html" class="menu-item">
+                        <i class="fa-solid fa-border-all"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a href="pedidos.html" class="menu-item menu-item-destaque">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span>Pedidos</span>
+                    </a>
+
+                    <a href="produtos.html" class="menu-item">
+                        <i class="fa-solid fa-pizza-slice"></i>
+                        <span>Produtos</span>
+                    </a>
+
+                    <a href="clientes.html" class="menu-item">
+                        <i class="fa-solid fa-users"></i>
+                        <span>Clientes</span>
+                    </a>
+
+                    <a href="comandas.html" class="menu-item">
+                        <i class="fa-solid fa-print"></i>
+                        <span>Comandas</span>
+                    </a>
+
+                    <a href="caixa.html" class="menu-item menu-item-destaque">
+                        <i class="fa-solid fa-wallet"></i>
+                        <span>Caixa</span>
+                    </a>
+
+                    <a href="relatorios.html" class="menu-item active">
+                        <i class="fa-solid fa-chart-column"></i>
+                        <span>Relatórios</span>
+                    </a>
+
+                    <a href="usuarios.html" class="menu-item">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <span>Usuários</span>
+                    </a>
+
+                    <a href="backup.html" class="menu-item">
+                        <i class="fa-solid fa-database"></i>
+                        <span>Backup</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-user-avatar">PC</div>
+                    <div>
+                        <strong>Pizzaria Carioca</strong>
+                        <span>Relatórios</span>
+                    </div>
+                </div>
+
+                <button id="btnSair" class="logout-button">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Sair
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Relatórios</h1>
+                    <p>Acompanhe os resultados diários e mensais da pizzaria.</p>
+                </div>
+            </header>
+
+            <section class="cards-navigation">
+                <button type="button" class="nav-card active" data-tab="diario">
+                    <i class="fa-solid fa-calendar-day"></i>
+                    <h3>Diário</h3>
+                    <span>Vendas do dia</span>
+                </button>
+
+                <button type="button" class="nav-card" data-tab="mensal">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <h3>Mensal</h3>
+                    <span>Faturamento por período</span>
+                </button>
+            </section>
+
+            <section id="tabDiario" class="tab-content active">
+                <div class="toolbar">
+                    <div class="toolbar-left">
+                        <input type="date" id="filtroDataDiario">
+
+                        <button type="button" id="btnImprimirRelatorioDiario" class="btn-secondary">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            Salvar PDF
+                        </button>
+                    </div>
+                </div>
+
+                <section class="relatorio-estatisticas">
+                    <article class="estatistica-card">
+                        <span>Total de vendas</span>
+                        <strong id="totalVendasDia">R$ 0,00</strong>
+                    </article>
+
+                    <article class="estatistica-card">
+                        <span>Entradas</span>
+                        <strong id="totalEntradasDia">R$ 0,00</strong>
+                    </article>
+
+                    <article class="estatistica-card">
+                        <span>Saídas</span>
+                        <strong id="totalSaidasDia">R$ 0,00</strong>
+                    </article>
+
+                    <article class="estatistica-card">
+                        <span>Saldo do dia</span>
+                        <strong id="saldoDia">R$ 0,00</strong>
+                    </article>
+
+                    <article class="estatistica-card">
+                        <span>Total em Pix</span>
+                        <strong id="totalPixDia">R$ 0,00</strong>
+                    </article>
+
+                    <article class="estatistica-card">
+                        <span>Total em Dinheiro</span>
+                        <strong id="totalDinheiroDia">R$ 0,00</strong>
+                    </article>
+
+                    <article class="estatistica-card">
+                        <span>Total em Cartão</span>
+                        <strong id="totalCartaoDia">R$ 0,00</strong>
+                    </article>
+
+                    <article class="estatistica-card">
+                        <span>Total de Entregas</span>
+                        <strong id="totalEntregasDia">R$ 0,00</strong>
+                    </article>
+                </section>
+
+                <section class="table-card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="90">Pedido</th>
+                                <th>Cliente</th>
+                                <th width="150">Pagamento</th>
+                                <th width="130">Total</th>
+                                <th width="160">Status</th>
+                                <th width="170">Data</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tbodyPedidosDia">
+                            <tr>
+                                <td colspan="6" class="empty-table">
+                                    Nenhum pedido encontrado para este dia.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+
+            <section id="tabMensal" class="tab-content">
+                <section id="blocoSenhaMensal" class="relatorio-card">
+                    <div class="relatorio-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <h3>Relatório mensal protegido</h3>
+                    <p>
+                        Informe a senha de administrador do sistema para visualizar o fechamento mensal.
+                        É a mesma senha usada para fazer login.
+                    </p>
+
+                    <form id="formSenhaMensal" class="form-grid">
+                        <div class="form-group">
+                            <label for="txtSenhaMensal">Senha administrativa</label>
+                            <input
+                                type="password"
+                                id="txtSenhaMensal"
+                                placeholder="Digite a senha"
+                            >
+                        </div>
+
+                        <div class="form-group" style="justify-content: flex-end;">
+                            <button type="submit" class="btn-primary">
+                                <i class="fa-solid fa-unlock"></i>
+                                Acessar
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <section id="blocoConteudoMensal" class="hidden">
+                    <section class="toolbar">
+                        <div class="toolbar-left">
+                            <input type="month" id="filtroMesMensal">
+
+                            <button type="button" id="btnGerarRelatorioMensal" class="btn-primary">
+                                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                                Gerar relatório
+                            </button>
+                        </div>
+                    </section>
+
+                    <section class="relatorio-estatisticas">
+                        <article class="estatistica-card">
+                            <span>Faturamento mensal</span>
+                            <strong id="totalVendasMes">R$ 0,00</strong>
+                        </article>
+
+                        <article class="estatistica-card">
+                            <span>Entradas mensais</span>
+                            <strong id="totalEntradasMes">R$ 0,00</strong>
+                        </article>
+
+                        <article class="estatistica-card">
+                            <span>Saídas mensais</span>
+                            <strong id="totalSaidasMes">R$ 0,00</strong>
+                        </article>
+
+                        <article class="estatistica-card">
+                            <span>Saldo mensal</span>
+                            <strong id="saldoMes">R$ 0,00</strong>
+                        </article>
+
+                        <article class="estatistica-card">
+                            <span>Ticket médio</span>
+                            <strong id="ticketMedioMes">R$ 0,00</strong>
+                        </article>
+                    </section>
+
+                    <section class="table-card">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th width="160">Pedidos</th>
+                                    <th width="160">Entradas</th>
+                                    <th width="160">Saídas</th>
+                                    <th width="160">Saldo</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tbodyRelatorioMensal">
+                                <tr>
+                                    <td colspan="5" class="empty-table">
+                                        Nenhum dado mensal encontrado.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <!-- Área dedicada exclusivamente à geração do PDF do relatório mensal -->
+    <div id="areaImpressaoRelatorio" class="apenas-impressao"></div>
+
+    <script src="../ui/toast.js"></script>
+    <script src="../utils/formatadores.js"></script>
+    <script src="../js/relatorios/index.js"></script>
+</body>
+</html>

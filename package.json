@@ -1,0 +1,46 @@
+{
+    "name": "carioca-sistema",
+    "version": "1.0.0",
+    "description": "Sistema de gerenciamento Pizzaria Carioca",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build": "electron-builder --win --x64"
+    },
+    "author": "Pizzaria Carioca",
+    "license": "ISC",
+    "build": {
+        "appId": "com.pizzariacarioca.sistema",
+        "productName": "Pizzaria Carioca",
+        "copyright": "Copyright © 2026 Pizzaria Carioca",
+        "icon": "build/logo.ico",
+        "directories": {
+            "output": "dist"
+        },
+        "win": {
+            "icon": "build/logo.ico",
+            "target": [
+                {
+                    "target": "portable",
+                    "arch": ["x64"]
+                }
+            ]
+        },
+        "files": [
+            "**/*",
+            "!dist/**",
+            "!*.zip",
+            "!database/pizzaria.db",
+            "!database/backups/**",
+            "!logs/**"
+        ]
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "sqlite3": "^6.0.1"
+    },
+    "devDependencies": {
+        "electron": "^35.7.5",
+        "electron-builder": "^25.1.8"
+    }
+}

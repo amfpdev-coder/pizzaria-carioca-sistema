@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Carioca | Usuários</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../ui/toast.css">
+    <link rel="stylesheet" href="../ui/confirm.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div>
+                <div class="sidebar-brand">
+                    <img src="../assets/images/logo.png" alt="Logo Pizzaria Carioca">
+                    <div>
+                        <strong>Pizzaria</strong>
+                        <span>Carioca</span>
+                    </div>
+                </div>
+
+                <nav class="sidebar-menu">
+                    <a href="dashboard.html" class="menu-item">
+                        <i class="fa-solid fa-border-all"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a href="pedidos.html" class="menu-item menu-item-destaque">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span>Pedidos</span>
+                    </a>
+
+                    <a href="produtos.html" class="menu-item">
+                        <i class="fa-solid fa-pizza-slice"></i>
+                        <span>Produtos</span>
+                    </a>
+
+                    <a href="clientes.html" class="menu-item">
+                        <i class="fa-solid fa-users"></i>
+                        <span>Clientes</span>
+                    </a>
+
+                    <a href="comandas.html" class="menu-item">
+                        <i class="fa-solid fa-print"></i>
+                        <span>Comandas</span>
+                    </a>
+
+                    <a href="caixa.html" class="menu-item menu-item-destaque">
+                        <i class="fa-solid fa-wallet"></i>
+                        <span>Caixa</span>
+                    </a>
+
+                    <a href="relatorios.html" class="menu-item">
+                        <i class="fa-solid fa-chart-column"></i>
+                        <span>Relatórios</span>
+                    </a>
+
+                    <a href="usuarios.html" class="menu-item active">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <span>Usuários</span>
+                    </a>
+
+                    <a href="backup.html" class="menu-item">
+                        <i class="fa-solid fa-database"></i>
+                        <span>Backup</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-user-avatar">PC</div>
+                    <div>
+                        <strong>Pizzaria Carioca</strong>
+                        <span>Usuários</span>
+                    </div>
+                </div>
+
+                <button id="btnSair" class="logout-button">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Sair
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Usuários</h1>
+                    <p>Gerencie os usuários que têm acesso ao sistema.</p>
+                </div>
+
+                <div class="topbar-actions">
+                    <button id="btnNovoUsuario" class="btn-primary">
+                        <i class="fa-solid fa-plus"></i>
+                        Novo usuário
+                    </button>
+                </div>
+            </header>
+
+            <section class="table-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="60">Nº</th>
+                            <th>Nome</th>
+                            <th width="180">Login</th>
+                            <th width="160">Tipo</th>
+                            <th width="130">Status</th>
+                            <th width="160">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyUsuarios">
+                        <tr>
+                            <td colspan="6" class="empty-table">Carregando...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Modal: Criar / Editar usuário -->
+            <div id="modalUsuario" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div>
+                            <h2 id="tituloModalUsuario">Novo Usuário</h2>
+                            <p>Preencha os dados de acesso.</p>
+                        </div>
+                        <button id="btnFecharModalUsuario" class="btn-close" type="button">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <form id="formUsuario" style="padding: 28px; display: flex; flex-direction: column; gap: 20px;">
+                        <input type="hidden" id="usuarioId">
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="txtNomeUsuario">Nome completo</label>
+                                <input type="text" id="txtNomeUsuario" placeholder="Ex: Juliene Silva">
+                            </div>
+
+                            <div class="form-group" id="grupoLoginUsuario">
+                                <label for="txtLoginUsuario">Login</label>
+                                <input type="text" id="txtLoginUsuario" placeholder="Ex: juliene" autocomplete="off">
+                            </div>
+                        </div>
+
+                        <div class="form-grid" id="grupoCriarSenha">
+                            <div class="form-group">
+                                <label for="txtSenhaUsuario">Senha</label>
+                                <input type="password" id="txtSenhaUsuario" placeholder="Mínimo 4 caracteres" autocomplete="new-password">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtConfirmarSenha">Confirmar senha</label>
+                                <input type="password" id="txtConfirmarSenha" placeholder="Repita a senha" autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="max-width: 240px;">
+                            <label for="selectTipoUsuario">Tipo</label>
+                            <select id="selectTipoUsuario">
+                                <option value="atendente">Atendente</option>
+                                <option value="admin">Administrador</option>
+                            </select>
+                        </div>
+
+                        <p id="mensagemUsuario" class="mensagem-erro"></p>
+
+                        <div class="modal-footer" style="padding: 0;">
+                            <button type="button" id="btnCancelarUsuario" class="btn-secondary">Cancelar</button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Salvar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal: Trocar senha -->
+            <div id="modalSenha" class="modal hidden">
+                <div class="modal-content" style="max-width: 460px;">
+                    <div class="modal-header">
+                        <div>
+                            <h2 id="tituloModalSenha">Trocar senha</h2>
+                            <p>Defina uma nova senha para o usuário.</p>
+                        </div>
+                        <button id="btnFecharModalSenha" class="btn-close" type="button">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <form id="formSenha" style="padding: 28px; display: flex; flex-direction: column; gap: 20px;">
+                        <input type="hidden" id="senhauserId">
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="txtNovaSenha">Nova senha</label>
+                                <input type="password" id="txtNovaSenha" placeholder="Mínimo 4 caracteres" autocomplete="new-password">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtConfirmarNovaSenha">Confirmar nova senha</label>
+                                <input type="password" id="txtConfirmarNovaSenha" placeholder="Repita a senha" autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <p id="mensagemSenha" class="mensagem-erro"></p>
+
+                        <div class="modal-footer" style="padding: 0;">
+                            <button type="button" id="btnCancelarSenha" class="btn-secondary">Cancelar</button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fa-solid fa-key"></i>
+                                Salvar senha
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../ui/toast.js"></script>
+    <script src="../ui/confirm.js"></script>
+    <script src="../utils/formatadores.js"></script>
+    <script src="../js/usuarios/index.js"></script>
+</body>
+</html>

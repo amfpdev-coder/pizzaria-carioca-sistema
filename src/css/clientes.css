@@ -1,0 +1,26 @@
+/* ==========================================================
+    CLIENTES
+    =========================================================
+    Depois da migração pro padrão compartilhado, esta tela não
+    tem mais nenhum estilo exclusivo — tudo (tabela, status,
+    botões de ação, modal, formulário) vem do dashboard.css.
+
+    Este arquivo continua linkado no clientes.html de propósito,
+    como reserva para qualquer ajuste visual específico que a
+    tela vier a precisar no futuro (ex: alguma coluna especial
+    na tabela de clientes).
+   ========================================================== */
+
+.clientes-table th,
+.clientes-table td {
+    white-space: nowrap;
+}
+
+.clientes-table td:nth-child(5),
+.clientes-table td:nth-child(6) {
+    white-space: normal;
+}
+
+.cliente-form {
+    width: 100%;
+}

@@ -1,0 +1,123 @@
+/* ==========================================================
+    CAIXA
+========================================================== */
+
+.caixa-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.caixa-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 22px;
+}
+
+.caixa-card {
+    padding: 24px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 22px;
+    box-shadow: var(--shadow-card);
+}
+
+.caixa-card h2,
+.caixa-card h3 {
+    margin-bottom: 16px;
+    color: var(--color-text);
+    font-weight: 900;
+}
+
+.caixa-resumo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.caixa-resumo-item {
+    padding: 20px;
+    background: var(--color-surface-light);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+}
+
+.caixa-resumo-item span {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--color-muted);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.caixa-resumo-item strong {
+    color: var(--color-text);
+    font-size: 26px;
+    font-weight: 900;
+}
+
+.caixa-resumo-item.pix strong {
+    color: #22c55e;
+}
+
+.caixa-resumo-item.cartao strong {
+    color: #60a5fa;
+}
+
+.caixa-resumo-item.dinheiro strong {
+    color: var(--color-gold);
+}
+
+.caixa-resumo-item.total strong {
+    color: var(--color-orange);
+}
+
+.movimentacao-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.movimentacao-item {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    background: var(--color-surface-light);
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+}
+
+.movimentacao-item strong {
+    color: var(--color-text);
+    font-size: 15px;
+}
+
+.movimentacao-item span {
+    display: block;
+    margin-top: 4px;
+    color: var(--color-muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.movimentacao-valor {
+    color: var(--color-gold);
+    font-size: 17px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.caixa-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+@media (max-width: 1000px) {
+    .caixa-grid {
+        grid-template-columns: 1fr;
+    }
+}
