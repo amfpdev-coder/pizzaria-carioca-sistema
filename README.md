@@ -26,6 +26,18 @@ Sistema desenvolvido sob demanda para a **Pizzaria Carioca**, uma pizzaria local
 - 👤 **Usuários** — controle de acesso com perfis admin e atendente
 - 💾 **Backup** — automático diário e manual, com restauração
 
+## 📸 Capturas de tela
+
+![Pedidos](screenshots/pedidos.png)
+![Novo Pedido](screenshots/novo-pedido.png)
+![Pagamento Misto](screenshots/pagamento-misto.png)
+![Editar Pedido](screenshots/editar-pedido.png)
+![Comanda](screenshots/comanda.png)
+![Relatórios Diário](screenshots/relatorios-diario.png)
+![Relatório Mensal](screenshots/relatorios-mensal.png)
+![Produtos](screenshots/produtos.png)
+![Editar Sabor](screenshots/editar-sabor.png)
+
 ### Tecnologias
 
 - **Electron** — aplicação desktop multiplataforma
@@ -35,6 +47,10 @@ Sistema desenvolvido sob demanda para a **Pizzaria Carioca**, uma pizzaria local
 - **electron-builder** — empacotamento como `.exe` portátil
 
 ### Arquitetura
+
+Controller → Service → Repository → SQLite
+IPC (Main ↔ Renderer via preload)
+
 
 ### Como rodar localmente
 
@@ -70,6 +86,18 @@ A desktop management system built on demand for **Pizzaria Carioca**, a pizzeria
 - 👤 **Users** — access control with admin and attendant roles
 - 💾 **Backup** — automatic daily and manual, with restore
 
+## 📸 Screenshots
+
+![Orders](screenshots/pedidos.png)
+![New Order](screenshots/novo-pedido.png)
+![Mixed Payment](screenshots/pagamento-misto.png)
+![Edit Order](screenshots/editar-pedido.png)
+![Receipt](screenshots/comanda.png)
+![Daily Report](screenshots/relatorios-diario.png)
+![Monthly Report](screenshots/relatorios-mensal.png)
+![Products](screenshots/produtos.png)
+![Edit Flavor](screenshots/editar-sabor.png)
+
 ### Tech Stack
 
 - **Electron** — cross-platform desktop app
@@ -79,6 +107,10 @@ A desktop management system built on demand for **Pizzaria Carioca**, a pizzeria
 - **electron-builder** — packaged as portable `.exe`
 
 ### Architecture
+
+Controller → Service → Repository → SQLite
+IPC (Main ↔ Renderer via preload)
+
 
 ### Running locally
 
